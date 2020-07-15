@@ -2,6 +2,7 @@ import React , {useState,useEffect} from 'react';
 import Main from './Components/Main';
 import {setTimeFormat,setTimeMin} from './Util/SetTimeFormat';
 import ids from './Util/ids';
+import "./Styles/styles.scss";
 
 function App() {
   const [sessionTime,setSessionTime] = useState(1500);

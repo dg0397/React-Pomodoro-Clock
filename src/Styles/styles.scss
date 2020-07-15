@@ -1,0 +1,31 @@
+@import "./modules-scss/variables";
+@import "./modules-scss/header";
+@import "./modules-scss/footer";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 14px;
+}
+body{
+    background: #40407a;
+}
+.container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin: 1rem auto;
+    width: 80%;
+    border: 2px solid white;
+    border-radius: 20px;
+    text-align: center;
+}
+.updating_block{
+    display: flex;
+    justify-content: center;
+}
+.display,
+.controls{
+    grid-column: 1 / -1;
+}
