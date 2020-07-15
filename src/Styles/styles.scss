@@ -1,4 +1,5 @@
 @import "./modules-scss/variables";
+@import "./modules-scss/container";
 @import "./modules-scss/header";
 @import "./modules-scss/footer";
 *{
@@ -7,25 +8,43 @@
     box-sizing: border-box;
 }
 html{
-    font-size: 14px;
+    font-family: $font;
+    font-size:$font-size
 }
 body{
-    background: #40407a;
+    background: #505097;
 }
-.container{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    margin: 1rem auto;
-    width: 80%;
-    border: 2px solid white;
-    border-radius: 20px;
-    text-align: center;
+.update_container{
+    #break-label,
+    #session-label{
+        font-weight: 400;
+        font-style: italic;
+        text-shadow: 5px 5px 10px #1f1f1f;
+    }
+    .updating_block{    
+        display: flex;    
+        justify-content: center;
+        margin: .5rem auto;
+        p{
+            margin: 0 1rem;
+            font-size: 1.3rem;
+        }
+        label{
+            font-size: 1.5rem;
+            -webkit-tap-highlight-color: transparent;
+            cursor: pointer;
+            &::selection{
+                background-color: transparent;
+            }
+        }
+    }
 }
-.updating_block{
-    display: flex;
-    justify-content: center;
+.display{
+    grid-column: 1 / -1;
+    .time-left{
+        font-family: $font-number
+    }   
 }
-.display,
 .controls{
     grid-column: 1 / -1;
 }
