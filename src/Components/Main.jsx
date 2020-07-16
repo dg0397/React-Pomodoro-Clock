@@ -6,13 +6,13 @@ import Controls from "./Controls";
 import Footer from "./Footer";
 
 
-const Main = ({currentTime , handleClick , breakTime , sessionTime,ids , turnOn ,switchedOn , handleReset, blockTime }) => {
+const Main = ({currentTime , handleClick , breakTime , sessionTime,ids , turnOn ,switchedOn , handleReset, blockTime,isEnding }) => {
     return(
         <div className = "container" >
             <Header />
             <InputBlock handleClick = {handleClick} currentTime = {breakTime} dataBlock = "Break" ids = {ids.breakIds} / >
             <InputBlock handleClick = {handleClick} currentTime = {sessionTime} dataBlock = "Session" ids = {ids.sessionIds}/ >
-            <Display timeLeft= {currentTime} blockTime = {blockTime}/>
+            <Display timeLeft= {currentTime} blockTime = {blockTime} isEnding = {isEnding}/>
             <Controls turnOn = {turnOn} switchedOn = {switchedOn} handleClick = {handleReset} />
             <Footer />
             <audio id="beep" preload="auto"

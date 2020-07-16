@@ -10,12 +10,14 @@ function App() {
   const [currentTime , setCurrentTime ] = useState(1500);
   const [switchedOn,setSwitchedOn] = useState(false);
   const [blockTimeRunnig,setBlockTimeRunnig] = useState('Session');
+  const [isEnding,setIsEnding] = useState(false);
 
   useEffect(() => {
     const audio = document.getElementById('beep');
     if(switchedOn){
       const interval = setInterval(() => {
         console.log('This will run every second!');
+        currentTime <= 60 ? setIsEnding(true):setIsEnding(false);
         setCurrentTime(currentTime => {
           if(currentTime === 0 && blockTimeRunnig === 'Session'){
             audio.currentTime = 0;
@@ -37,7 +39,7 @@ function App() {
       }, 1000);
       return () => clearInterval(interval);
     }
-  }, [switchedOn,blockTimeRunnig,breakTime,sessionTime]);
+  }, [switchedOn,blockTimeRunnig,breakTime,sessionTime,currentTime]);
   
   const updateLengthTime = (e) => {
     const {block} = e.target.dataset;
@@ -90,6 +92,7 @@ function App() {
     switchedOn = {switchedOn}
     handleReset = {resetApp}
     blockTime = {blockTimeRunnig}
+    isEnding = {isEnding}
     />
   );
 }
