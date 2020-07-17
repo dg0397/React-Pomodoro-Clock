@@ -16,8 +16,12 @@ function App() {
     const audio = document.getElementById('beep');
     if(switchedOn){
       const interval = setInterval(() => {
-        console.log('This will run every second!');
-        currentTime <= 60 ? setIsEnding(true):setIsEnding(false);
+        //console.log('This will run every second!');
+        
+        currentTime <= 60 ? 
+        setIsEnding(true):
+        setIsEnding(false);
+        
         setCurrentTime(currentTime => {
           if(currentTime === 0 && blockTimeRunnig === 'Session'){
             audio.currentTime = 0;
@@ -32,6 +36,7 @@ function App() {
             setBlockTimeRunnig('Session');
 
             return currentTime + sessionTime;
+            
           }else{
             return currentTime - 1;
           }
@@ -42,6 +47,7 @@ function App() {
   }, [switchedOn,blockTimeRunnig,breakTime,sessionTime,currentTime]);
   
   const updateLengthTime = (e) => {
+    setSwitchedOn(false);
     const {block} = e.target.dataset;
     const {direction} = e.target.dataset;
 

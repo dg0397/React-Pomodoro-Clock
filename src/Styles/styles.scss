@@ -1,6 +1,9 @@
 @import "./modules-scss/variables";
 @import "./modules-scss/container";
 @import "./modules-scss/header";
+@import "./modules-scss/input-block";
+@import "./modules-scss/display";
+@import "./modules-scss/controls";
 @import "./modules-scss/footer";
 *{
     margin: 0;
@@ -16,72 +19,4 @@ html{
 }
 body{
     background: #505097;
-}
-.update_container{
-    #break-label,
-    #session-label{
-        font-weight: 400;
-        font-style: italic;
-        text-shadow: 5px 5px 10px #1f1f1f;
-    }
-    .updating_block{    
-        display: flex;    
-        justify-content: center;
-        align-items: baseline;
-        margin: .5rem auto;
-        p{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 1rem;
-            font-size: 1.3rem;
-        }
-        label{
-            font-size: 1.8rem;
-            -webkit-tap-highlight-color: transparent;
-            cursor: pointer;
-            &::selection{
-                background-color: transparent;
-            }
-        }
-    }
-}
-.display{
-    grid-column: 1 / -1;
-    #timer-label{
-        font-size: 1.8rem;
-        font-weight: 400;
-        font-style: italic;
-        text-shadow: 5px 5px 10px #1f1f1f;
-        @media screen and (min-width: 1024px) {
-            margin-bottom: .25rem;
-        }
-    }
-    #time-left{
-        margin: 0 auto ;
-        font-size: 1.5rem;
-        font-family: $font-number;
-        letter-spacing: .5rem;
-    } 
-    &.active{
-        #timer-label{
-            text-shadow:none;
-        }
-        color: rgb(182, 52, 52);
-    }
-      
-}
-.controls{
-    grid-column: 1 / -1;
-    font-size: 1.8rem;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    label{
-        cursor: pointer;
-    }
-    label:first-child {
-        margin-right: 1rem;
-    }
 }

@@ -1,0 +1,17 @@
+.controls{
+    grid-column: 1 / -1;
+    font-size: 1.8rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    label{
+        cursor: pointer;
+        &::selection{
+            background-color: transparent;
+        }
+    }
+    label:first-child {
+        margin-right: 1rem;
+    }
+}
