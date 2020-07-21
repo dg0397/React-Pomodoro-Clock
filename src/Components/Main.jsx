@@ -6,7 +6,7 @@ import Controls from "./Controls";
 import Footer from "./Footer";
 
 
-const Main = ({currentTime , handleClick , breakTime , sessionTime,ids , turnOn ,switchedOn , handleReset, blockTime,isEnding }) => {
+const Main = ({currentTime , handleClick , breakTime , sessionTime,ids , turnOn ,switchedOn , handleReset, blockTime,isEnding,audioElement }) => {
     return(
         <div className = "container" >
             <Header />
@@ -15,7 +15,7 @@ const Main = ({currentTime , handleClick , breakTime , sessionTime,ids , turnOn 
             <Display timeLeft= {currentTime} blockTime = {blockTime} isEnding = {isEnding}/>
             <Controls turnOn = {turnOn} switchedOn = {switchedOn} handleClick = {handleReset} />
             <Footer />
-            <audio id="beep" preload="auto"
+            <audio id="beep" preload="auto" ref= {audioElement} 
             src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
         />
         </div>

@@ -11,9 +11,10 @@ function App() {
   const [switchedOn,setSwitchedOn] = useState(false);
   const [blockTimeRunnig,setBlockTimeRunnig] = useState('Session');
   const [isEnding,setIsEnding] = useState(false);
+  const audio = React.createRef();
 
   useEffect(() => {
-    const audio = document.getElementById('beep');
+
     if(switchedOn){
       const interval = setInterval(() => {
         //console.log('This will run every second!');
@@ -21,18 +22,18 @@ function App() {
         currentTime <= 60 ? 
         setIsEnding(true):
         setIsEnding(false);
+
+        currentTime === 1 && audio.current.play()
         
         setCurrentTime(currentTime => {
           if(currentTime === 0 && blockTimeRunnig === 'Session'){
-            audio.currentTime = 0;
-            audio.play();
+
             setBlockTimeRunnig('Break');
             
             return currentTime + breakTime;
           
           }else if(currentTime === 0 && blockTimeRunnig === 'Break'){
-            audio.currentTime = 0;
-            audio.play();
+
             setBlockTimeRunnig('Session');
 
             return currentTime + sessionTime;
@@ -44,7 +45,7 @@ function App() {
       }, 1000);
       return () => clearInterval(interval);
     }
-  }, [switchedOn,blockTimeRunnig,breakTime,sessionTime,currentTime]);
+  }, [switchedOn,blockTimeRunnig,breakTime,sessionTime,currentTime,audio]);
   
   const updateLengthTime = (e) => {
     setSwitchedOn(false);
@@ -83,10 +84,11 @@ function App() {
     setCurrentTime(1500);
     setSwitchedOn(false);
     setBlockTimeRunnig('Session');
-    const audio = document.getElementById('beep');
-    audio.pause();
-    audio.currentTime = 0;
+    setIsEnding(false);
+    audio.current.pause();
+    audio.current.currentTime = 0;
   }
+
   return (
     <Main 
     sessionTime = {setTimeMin(sessionTime)}
@@ -99,6 +101,7 @@ function App() {
     handleReset = {resetApp}
     blockTime = {blockTimeRunnig}
     isEnding = {isEnding}
+    audioElement = {audio}
     />
   );
 }
